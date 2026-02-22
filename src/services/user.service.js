@@ -35,6 +35,20 @@ const userService = {
       );
     });
   },
+  update: (id, user) => {
+    const { nome, email } = user;
+
+    return new Promise((resolve, reject) => {
+      db.run(
+        "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?",
+        [nome, email, id],
+        function (err) {
+          if (err) reject(err);
+          else resolve(this.changes);
+        },
+      );
+    });
+  },
 };
 
 module.exports = userService;
