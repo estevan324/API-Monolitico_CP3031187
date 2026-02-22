@@ -13,7 +13,7 @@ db.run(`
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
-    status TEXT NOT NULL DEFAULT 'ativo'
+    status TEXT NOT NULL DEFAULT 'ativo',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   )
 `);
