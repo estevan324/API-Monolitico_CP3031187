@@ -49,6 +49,18 @@ const userService = {
       );
     });
   },
+  delete: (id) => {
+    return new Promise((resolve, reject) => {
+      db.run(
+        "UPDATE usuarios SET status = 'inativo' WHERE id = ?",
+        [id],
+        function (err) {
+          if (err) reject(err);
+          else resolve(this.changes);
+        },
+      );
+    });
+  },
 };
 
 module.exports = userService;
