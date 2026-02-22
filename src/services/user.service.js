@@ -9,6 +9,20 @@ const userService = {
       });
     });
   },
+  create: (user) => {
+    const { nome, email } = user;
+
+    return new Promise((resolve, reject) => {
+      db.run(
+        "INSERT INTO usuarios (nome, email) VALUES (?, ?)",
+        [nome, email],
+        function (err) {
+          if (err) reject(err);
+          else resolve(this.lastID);
+        },
+      );
+    });
+  },
 };
 
 module.exports = userService;
